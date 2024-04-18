@@ -1,0 +1,133 @@
+h2 {
+    text-align: left;
+    font-size: 32px;
+}
+
+.progressContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+}
+
+.progressGroup {
+    display: flex;
+    gap: 8px;
+}
+
+.progressIcon {
+    display: inline-block;
+    background: #fff;
+    color: #AFB1BD;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    border: 1px solid #AFB1BD;
+}
+
+.active {
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+}
+
+.progressLabel {
+    color: #AFB1BD;
+    display: none;
+}
+
+.progressLabelDone {
+    composes: progressLabel;
+    color: #000
+}
+
+.progressBar {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #AFB1BD;;
+    transform: translateY(50%);
+}
+
+.progressBarDone {
+    composes: progressBar;
+    background: #000;
+}
+
+.formTitle {
+    text-align: left;
+    font-size: 24px;
+}
+
+.input_group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inputLabel {
+    font-size: 12px;
+    color: #808080;
+    text-align: left;
+}
+
+input, select {
+    box-sizing: border-box;
+    height: 40px;
+    border: 1px solid #4A4A4A;
+    border-radius: 4px;
+    padding: 12px 16px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+select {
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.selectContainer {
+    background: transparent;
+    position: relative;
+    width: 100%;
+}
+
+.selectContainer::after {
+    content: '\25BE';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-100%);
+    z-index: -1;
+}
+
+.next {
+    background: #F67599;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+}
+
+button img {
+    margin-left: 12px;
+    vertical-align: sub;
+}
+
+/* Progress Control */
+.progressControlContainer {
+    border-top: 1px solid #E6E6EB;
+    padding-top: 24px;
+}
+
+@media screen and (min-width: 992px) {
+    /* StepProgress */
+    .progressLabel,
+    .progressLabelDone {
+        display: block;
+    }
+}

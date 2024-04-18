@@ -1,0 +1,49 @@
+.col {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 30px;
+    flex-wrap: wrap;
+}
+
+.col_12 {
+    width: 100%;
+}
+
+.input_w_sm_s1 {
+    width: calc((2/6) * 100% - 15px);
+}
+
+.input_w_sm_s2 {
+    width: calc((4/6) * 100% - 15px);
+}
+
+.input_w_sm_s3 {
+    width: 50%;
+}
+
+.input_w_sm_full {
+    width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+
+    .input_w_lg_1 {
+        flex-basis: calc((100% - 30*11px)/6);
+        flex-grow: 1;
+    }
+
+    .input_w_lg_2 {
+        flex-basis: calc(((100% - 30*11px)/6) * 2 + 30px);
+        flex-grow: 1;
+    }
+
+    .input_w_lg_3 {
+        flex-basis: calc(((100% - 30*11px)/6) * 3 + 30*2px);
+        flex-grow: 1;
+    }
+
+    .input_w_lg_4 {
+        flex-basis: calc(((100% - 30*11px)/6) * 4 + 30*3px);
+        flex-grow: 1;
+    }
+}
