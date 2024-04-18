@@ -1,12 +1,15 @@
+import styles from '../../style/Steps.module.css'
+import grid from '../../style/Grid.module.css'
+
 export function Step1() {
     return (
-        <form className="col col-12" data-phase="address">
-            <h3 className="form-title">寄送地址</h3>
+        <form data-phase="address">
+            <h3 className={styles.formTitle}>寄送地址</h3>
             <section className="form-body col col-12">
-                <div className="col col-12">
-                    <div className="input-group input-w-lg-2 input-w-sm-s1">
-                        <div className="input-label">稱謂</div>
-                        <div className="select-container">
+                <div className={grid.col}>
+                    <div className={`${grid.input_group} ${grid.input_w_lg_2} ${grid.input_w_sm_s1}`}>
+                        <div className={styles.inputLabel}>稱謂</div>
+                        <div className={styles.selectContainer}>
                             <select>
                                 <option value="mr" defaultValue>先生</option>
                                 <option value="ms">女士</option>
@@ -14,25 +17,25 @@ export function Step1() {
                             </select>
                         </div>
                     </div>
-                    <div className="input-group input-w-lg-4 input-w-sm-s2">
-                        <div className="input-label">姓名</div>
+                    <div className={`${grid.input_group} ${grid.input_w_lg_4} ${grid.input_w_sm_s2}`}>
+                        <div className={styles.inputLabel}>姓名</div>
                         <input type="text" placeholder="請輸入姓名" />
                     </div>
                 </div>
-                <div className="col col-12">
-                    <div className="input-group input-w-lg-3 input-w-sm-full">
-                        <div className="input-label">電話</div>
+                <div className={grid.col}>
+                    <div className={`${grid.input_group} ${grid.input_w_lg_3} ${grid.input_w_sm_full}`}>
+                        <div className={styles.inputLabel}>電話</div>
                         <input type="tel" placeholder="請輸入行動電話" />
                     </div>
-                    <div className="input-group input-w-lg-3 input-w-sm-full">
-                        <div className="input-label">Email</div>
+                    <div className={`${grid.input_group} ${grid.input_w_lg_3} ${grid.input_w_sm_full}`}>
+                        <div className={styles.inputLabel}>Email</div>
                         <input type="email" placeholder="請輸入電子郵件" />
                     </div>
                 </div>
-                <div className="col col-12">
-                    <div className="input-group input-w-lg-2 input-w-sm-full">
-                        <div className="input-label">縣市</div>
-                        <div className="select-container">
+                <div className={grid.col}>
+                    <div className={`${grid.input_group} ${grid.input_w_lg_2} ${grid.input_w_sm_full}`}>
+                        <div className={styles.inputLabel}>縣市</div>
+                        <div className={styles.selectContainer}>
                             <select required>
                                 <option value="">請選擇縣市</option>
                                 <option value="KLU">基隆市</option>
@@ -67,8 +70,8 @@ export function Step1() {
                             </select>
                         </div>
                     </div>
-                    <div className="input-group input-w-lg-4 input-w-sm-full">
-                        <div className="input-label">地址</div>
+                    <div className={`${grid.input_group} ${grid.input_w_lg_4} ${grid.input_w_sm_full}`}>
+                        <div className={styles.inputLabel}>地址</div>
                         <input type="text" placeholder="請輸入地址" />
                     </div>
                 </div>
@@ -80,7 +83,7 @@ export function Step1() {
 export function Step2() {
     return (
         <form className="col col-12" data-phase="shipping">
-            <h3 className="form-title">運送方式</h3>
+            <h3 className={styles.formTitle}>運送方式</h3>
             <section className="form-body col col-12">
                 <label className="radio-group col col-12" data-price="0">
                     <input id="shipping-standard" type="radio" name="shipping" checked />
@@ -111,27 +114,27 @@ export function Step2() {
 
 export function Step3() {
     <form className="col col-12" data-phase="credit-card">
-        <h3 className="form-title">付款資訊</h3>
+        <h3 className={styles.formTitle}>付款資訊</h3>
         <section className="form-body col col-12">
             <div className="col col-12">
                 <div className="input-group input-w-lg-4 input-w-sm-full">
-                    <div className="input-label">持卡人姓名</div>
+                    <div className={styles.inputLabel}>持卡人姓名</div>
                     <input type="text" placeholder="John Doe" />
                 </div>
             </div>
             <div className="col col-12">
                 <div className="input-group input-w-lg-4 input-w-sm-full">
-                    <div className="input-label">卡號</div>
+                    <div className={styles.inputLabel}>卡號</div>
                     <input type="text" placeholder="1111 2222 3333 4444" />
                 </div>
             </div>
             <div className="col col-12">
                 <div className="input-group input-w-lg-3 input-w-sm-s3">
-                    <div className="input-label">有效期限</div>
+                    <div className={styles.inputLabel}>有效期限</div>
                     <input type="text" placeholder="MM/YY" />
                 </div>
                 <div className="input-group input-w-lg-3 input-w-sm-s3">
-                    <div className="input-label">CVC / CCV</div>
+                    <div className={styles.inputLabel}>CVC / CCV</div>
                     <input type="text" placeholder="123" />
                 </div>
             </div>
