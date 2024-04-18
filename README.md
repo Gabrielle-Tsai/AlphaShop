@@ -10,6 +10,7 @@ Let users fill forms to checkout.
 
 ## Prerequisites
 Node.js v20.11.1
+
 React v18.2.0
 
 ## Installation and Execution
