@@ -106,11 +106,20 @@ select {
     z-index: -1;
 }
 
+/* Progress Control */
+.progressControlContainer {
+    border-top: 1px solid #E6E6EB;
+    padding-top: 24px;
+    display: flex;
+}
+
 .next {
     background: #F67599;
     color: #fff;
     font-size: 14px;
     width: 100%;
+    border-radius: 8px;
+    margin-left: auto;
 }
 
 button img {
@@ -118,16 +127,15 @@ button img {
     vertical-align: sub;
 }
 
-/* Progress Control */
-.progressControlContainer {
-    border-top: 1px solid #E6E6EB;
-    padding-top: 24px;
-}
-
 @media screen and (min-width: 992px) {
     /* StepProgress */
     .progressLabel,
     .progressLabelDone {
         display: block;
+    }
+
+    /* Progress Control */
+    .next {
+        width: 174px;
     }
 }

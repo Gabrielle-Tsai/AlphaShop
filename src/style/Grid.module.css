@@ -6,6 +6,7 @@
 }
 
 .col_12 {
+    display: flex;
     width: 100%;
 }
 
