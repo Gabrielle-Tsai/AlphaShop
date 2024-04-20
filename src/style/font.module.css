@@ -1,0 +1,28 @@
+.nunito_sans_700 {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100,
+        "YTLC" 500;
+}
+
+.noto_sans_400 {
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+@font-face {
+    font-family: "Nunito Sans";
+    src: url('/fonts/NunitoSans.ttf');
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    src: url('/fonts/NotoSans.ttf');
+}
