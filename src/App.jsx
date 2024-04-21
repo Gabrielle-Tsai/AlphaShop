@@ -26,14 +26,12 @@ function App() {
   return (
     <Main>
       <h2>結帳</h2>
-      <div>
         <StepsPanel>
           <StepProgress />
           <Step1 />
           <Cart />
           <ProgressControl />
         </StepsPanel>
-      </div>
     </Main>
   )
 }
