@@ -13,10 +13,33 @@ function Main({children}) {
   )
 }
 
-function StepsPanel({children}) {
+function StepsPanel() {
+  const [step, setStep] = useState(1)
+
+  function handlePrev() {
+    if (step > 1) {
+      setStep(step - 1)
+    }
+  }
+
+  function handleNext() {
+    if (step < 3) {
+      setStep(step + 1)
+    }
+  }
+
   return (
     <div className='stepsPanel'>
-      {children}
+      <StepProgress />
+      <Step1 isActive={step === 1}/>
+      <Step2 isActive={step === 2}/>
+      <Step3 isActive={step === 3}/>
+      <Cart />
+      <ProgressControl 
+        onPrev={handlePrev}
+        onNext={handleNext}
+        step={step}
+      />
     </div>
   )
 }
@@ -27,10 +50,6 @@ function App() {
     <Main>
       <h2>結帳</h2>
         <StepsPanel>
-          <StepProgress />
-          <Step1 />
-          <Cart />
-          <ProgressControl />
         </StepsPanel>
     </Main>
   )

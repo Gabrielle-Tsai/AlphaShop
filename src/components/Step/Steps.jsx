@@ -1,9 +1,13 @@
 import styles from '../../style/Steps.module.css'
 import grid from '../../style/Grid.module.css'
 
-export function Step1() {
+export function Step1({ isActive }) {
+    let className = ''
+    if (!isActive) {
+        className = 'd-none'
+    }
     return (
-        <form data-phase="address">
+        <form data-phase="address" className={className}>
             <h3 className={styles.formTitle}>寄送地址</h3>
             <section className="form-body col col-12">
                 <div className={grid.col}>
@@ -80,30 +84,34 @@ export function Step1() {
     )
 }
 
-export function Step2() {
+export function Step2({ isActive }) {
+    let className = ''
+    if (!isActive) {
+        className = 'd-none'
+    }
     return (
-        <form className="col col-12" data-phase="shipping">
+        <form className={`col col-12 ${className}`} data-phase="shipping">
             <h3 className={styles.formTitle}>運送方式</h3>
-            <section className="form-body col col-12">
-                <label className="radio-group col col-12" data-price="0">
+            <section className="form-body">
+                <label className={`${styles.radioGroup}`} data-price="0">
                     <input id="shipping-standard" type="radio" name="shipping" checked />
-                    <div className="radio-info">
-                        <div className="col col-12">
-                            <div className="text">標準運送</div>
-                            <div className="price"></div>
+                    <div className={styles.radioInfo}>
+                        <div className="d-flex justify-content-between">
+                            <div className={styles.text}>標準運送</div>
+                            <div className={styles.price}>免費</div>
                         </div>
-                        <div className="period col col-12">約 3~7 個工作天</div>
+                        <div className={styles.period}>約 3~7 個工作天</div>
                     </div>
                     <div className="radio-box-border"></div>
                 </label>
-                <label className="radio-group col col-12" data-price="500">
+                <label className={styles.radioGroup} data-price="500">
                     <input id="shipping-dhl" type="radio" name="shipping" />
-                    <div className="radio-info">
-                        <div className="col col-12">
-                            <div className="text">DHL 貨運</div>
-                            <div className="price"></div>
+                    <div className={styles.radioInfo}>
+                        <div className="d-flex justify-content-between">
+                            <div className={styles.text}>DHL 貨運</div>
+                            <div className={styles.price}>$500</div>
                         </div>
-                        <div className="period col col-12">48 小時內送達</div>
+                        <div className={styles.period}>48 小時內送達</div>
                     </div>
                     <div className="radio-box-border"></div>
                 </label>
@@ -112,8 +120,12 @@ export function Step2() {
     )
 }
 
-export function Step3() {
-    <form className="col col-12" data-phase="credit-card">
+export function Step3({ isActive}) {
+    let className = ''
+    if (!isActive) {
+        className = 'd-none'
+    }
+    <form className={`col col-12 ${className}`} data-phase="credit-card">
         <h3 className={styles.formTitle}>付款資訊</h3>
         <section className="form-body col col-12">
             <div className="col col-12">
