@@ -15,6 +15,7 @@ function Main({children}) {
 
 function StepsPanel() {
   const [step, setStep] = useState(1)
+  const [shipping, setShipping] = useState(0)
 
   function handlePrev() {
     if (step > 1) {
@@ -28,13 +29,17 @@ function StepsPanel() {
     }
   }
 
+  function handleSetShipping(e) {
+    setShipping(parseInt(e.target.dataset.price))
+  }
+
   return (
     <div className='stepsPanel'>
-      <StepProgress />
+      <StepProgress step={step} />
       <Step1 isActive={step === 1}/>
-      <Step2 isActive={step === 2}/>
+      <Step2 isActive={step === 2} setShipping={handleSetShipping}/>
       <Step3 isActive={step === 3}/>
-      <Cart />
+      <Cart shipping={shipping}/>
       <ProgressControl 
         onPrev={handlePrev}
         onNext={handleNext}

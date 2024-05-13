@@ -1,22 +1,6 @@
+import { useState } from 'react'
 import cart from '../../src/style/Cart.module.css'
 import font from '../../src/style/font.module.css'
-
-const data = [
-    {
-        id: '1',
-        name: '貓咪罐罐',
-        img: 'https://picsum.photos/300/300?text=1',
-        price: 100,
-        quantity: 2,
-    },
-    {
-        id: '2',
-        name: '貓咪干干',
-        img: 'https://picsum.photos/300/300?text=2',
-        price: 200,
-        quantity: 1,
-    },
-]
 
 // 價格每千分位加上,
 function numAddComma(num) {
@@ -31,19 +15,9 @@ function numAddComma(num) {
     return result
 }
 
-function QuantityPanel({ quantity }) {
-    return (
-        <div className={cart.quantityPanel}>
-            <button className={cart.minus}><img src="/icons/minus.svg" alt="minus" /></button>
-            <span className={cart.quantityNum}>{quantity}</span>
-            <button className={cart.plus}><img src="/icons/plus.svg" alt="plus" /></button>
-        </div>
-
-    )
-}
-
-function Item(product) {
-    let price = product.price * product.quantity
+function Item({product, onMinus, onPlus}) {
+    let price = product.price
+    let id = product.id
     return (
         <>
             <div className={cart.itemCard}>
@@ -53,9 +27,11 @@ function Item(product) {
                 />
                 <div>
                     <h4 className={`${cart.productName} ${font.noto_sans_400}`}>{product.name}</h4>
-                    <QuantityPanel 
-                        quantity={product.quantity}
-                    />
+                    <div className={cart.quantityPanel}>
+                        <button className={cart.minus} onClick={onMinus} data-id={id}><img src="/icons/minus.svg" alt="minus" data-id={id} /></button>
+                        <span className={cart.quantityNum}>{product.quantity}</span>
+                        <button className={cart.plus} onClick={onPlus} data-id={id}><img src="/icons/plus.svg" alt="plus" data-id={id} /></button>
+                    </div>
                     <p className={`${cart.productPrice} ${font.nunito_sans_700}`}>${price > 999 ? numAddComma(price) : price}</p>
                 </div>
             </div>
@@ -64,21 +40,28 @@ function Item(product) {
 }
 
 // 運費
-function Shipping() {
+function Shipping({ shipping }) {
+    let fee = ''
+    if (shipping === 0) {
+        fee = '免費'
+    } else {
+        fee = `$${shipping}`
+    }
     return (
         <>
             <div className={cart.shipping}>
                 <p>運費</p>
-                <p className={font.nunito_sans_700}>免費</p>
+                <p className={font.nunito_sans_700}>{fee}</p>
             </div>
         </>
     )
 }
 
 // 小計
-function Total({items}) {
+function Total({items, shipping}) {
     let total = 0
     items.map(item => total += item.price * item.quantity)
+    total += shipping
     return (
         <>
             <div className={cart.total}>
@@ -89,16 +72,66 @@ function Total({items}) {
     )
 }
 
-export default function Cart() {
+export default function Cart({ shipping }) {
+    const [data, setData] = useState(
+        [
+            {
+                id: '1',
+                name: '貓咪罐罐',
+                img: 'https://picsum.photos/300/300?text=1',
+                price: 100,
+                quantity: 2,
+            },
+            {
+                id: '2',
+                name: '貓咪干干',
+                img: 'https://picsum.photos/300/300?text=2',
+                price: 200,
+                quantity: 1,
+            },
+        ]
+    )
+
+    function handleMinus(e) {
+        let id = e.target.dataset.id
+        let updateData = data.map(item => {
+            if (item.id === id && item.quantity > 0) {
+                return {
+                    ...item,
+                    quantity: item.quantity - 1
+                }
+            } else {
+                return item
+            }
+        })
+        setData(updateData)
+    }
+
+    function handlePlus(e) {
+        let id = e.target.dataset.id
+        let updateData = data.map(item => {
+            if (item.id === id) {
+                return {
+                    ...item,
+                    quantity: item.quantity + 1
+                }
+            } else {
+                return item
+            }
+        })
+        setData(updateData)
+    }
+
     return (
         <div className={cart.cart}>
             <h3 className={cart.title}>購物籃</h3>
             {data.map(item => 
-                <Item {...item} key={item.id} />
+                <Item product={item} key={item.id} onMinus={handleMinus} onPlus={handlePlus} />
             )}
-            <Shipping />
+            <Shipping shipping={shipping} />
             <Total
-               items={data} 
+               items={data}
+               shipping={shipping}
             />
         </div>
     )

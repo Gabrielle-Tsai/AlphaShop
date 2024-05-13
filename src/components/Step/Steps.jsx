@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import styles from '../../style/Steps.module.css'
 import grid from '../../style/Grid.module.css'
 
@@ -9,7 +10,7 @@ export function Step1({ isActive }) {
     return (
         <form data-phase="address" className={className}>
             <h3 className={styles.formTitle}>寄送地址</h3>
-            <section className="form-body col col-12">
+            <section className="form-body">
                 <div className={grid.col}>
                     <div className={`${grid.input_group} ${grid.input_w_lg_2} ${grid.input_w_sm_s1}`}>
                         <div className={styles.inputLabel}>稱謂</div>
@@ -84,17 +85,21 @@ export function Step1({ isActive }) {
     )
 }
 
-export function Step2({ isActive }) {
+export function Step2({ isActive, setShipping }) {
     let className = ''
     if (!isActive) {
         className = 'd-none'
     }
+
+    const shipping = 500
+    const [type, setType] = useState('standard')
+
     return (
-        <form className={`col col-12 ${className}`} data-phase="shipping">
+        <form className={className} data-phase="shipping">
             <h3 className={styles.formTitle}>運送方式</h3>
             <section className="form-body">
-                <label className={`${styles.radioGroup}`} data-price="0">
-                    <input id="shipping-standard" type="radio" name="shipping" checked />
+                <label className={styles.radioGroup} htmlFor="shipping-standard">
+                    <input id="shipping-standard" type="radio" name="shipping" checked={type === 'standard'} data-price="0" onChange={() => setType('standard')} onClick={setShipping}/>
                     <div className={styles.radioInfo}>
                         <div className="d-flex justify-content-between">
                             <div className={styles.text}>標準運送</div>
@@ -104,12 +109,12 @@ export function Step2({ isActive }) {
                     </div>
                     <div className="radio-box-border"></div>
                 </label>
-                <label className={styles.radioGroup} data-price="500">
-                    <input id="shipping-dhl" type="radio" name="shipping" />
+                <label className={styles.radioGroup} htmlFor="shipping-dhl">
+                    <input id="shipping-dhl" type="radio" name="shipping" data-price={`${shipping}`} checked={type === 'dhl'} onChange={() => setType('dhl')} onClick={setShipping}/>
                     <div className={styles.radioInfo}>
                         <div className="d-flex justify-content-between">
                             <div className={styles.text}>DHL 貨運</div>
-                            <div className={styles.price}>$500</div>
+                            <div className={styles.price}>${shipping}</div>
                         </div>
                         <div className={styles.period}>48 小時內送達</div>
                     </div>
@@ -120,36 +125,38 @@ export function Step2({ isActive }) {
     )
 }
 
-export function Step3({ isActive}) {
+export function Step3({ isActive }) {
     let className = ''
     if (!isActive) {
         className = 'd-none'
     }
-    <form className={`col col-12 ${className}`} data-phase="credit-card">
-        <h3 className={styles.formTitle}>付款資訊</h3>
-        <section className="form-body col col-12">
-            <div className="col col-12">
-                <div className="input-group input-w-lg-4 input-w-sm-full">
-                    <div className={styles.inputLabel}>持卡人姓名</div>
-                    <input type="text" placeholder="John Doe" />
+    return (
+        <form className={className} data-phase="credit-card">
+            <h3 className={styles.formTitle}>付款資訊</h3>
+            <section className="form-body">
+                <div className="col col-12">
+                    <div className="input-group input-w-lg-4 input-w-sm-full">
+                        <div className={styles.inputLabel}>持卡人姓名</div>
+                        <input type="text" placeholder="John Doe" />
+                    </div>
                 </div>
-            </div>
-            <div className="col col-12">
-                <div className="input-group input-w-lg-4 input-w-sm-full">
-                    <div className={styles.inputLabel}>卡號</div>
-                    <input type="text" placeholder="1111 2222 3333 4444" />
+                <div className="col col-12">
+                    <div className="input-group input-w-lg-4 input-w-sm-full">
+                        <div className={styles.inputLabel}>卡號</div>
+                        <input type="text" placeholder="1111 2222 3333 4444" />
+                    </div>
                 </div>
-            </div>
-            <div className="col col-12">
-                <div className="input-group input-w-lg-3 input-w-sm-s3">
-                    <div className={styles.inputLabel}>有效期限</div>
-                    <input type="text" placeholder="MM/YY" />
+                <div className="col col-12">
+                    <div className="input-group input-w-lg-3 input-w-sm-s3">
+                        <div className={styles.inputLabel}>有效期限</div>
+                        <input type="text" placeholder="MM/YY" />
+                    </div>
+                    <div className="input-group input-w-lg-3 input-w-sm-s3">
+                        <div className={styles.inputLabel}>CVC / CCV</div>
+                        <input type="text" placeholder="123" />
+                    </div>
                 </div>
-                <div className="input-group input-w-lg-3 input-w-sm-s3">
-                    <div className={styles.inputLabel}>CVC / CCV</div>
-                    <input type="text" placeholder="123" />
-                </div>
-            </div>
-        </section>
-    </form>
+            </section>
+        </form>
+    )
 }

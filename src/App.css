@@ -170,6 +170,8 @@ table {
 }
 
 .col-12 {
+  display: flex;
+  gap: 30px;
   width: 100%;
   flex-shrink: 0;
 }
@@ -197,7 +199,7 @@ h2 {
 input[type='radio'] {
   -webkit-appearance: none;
   width: 20px;
-  height: 20px;
+  height: 18px;
   background: #fff;
   border: 1px solid #2a2a2a;
   border-radius: 50%;
@@ -224,3 +226,20 @@ input[type='radio']:checked ~ .radio-box-border {
   border-radius: 4px;
 }
 
+.input-group {
+  width: 100%;
+}
+
+.input-w-sm-s3 {
+  width: 50%;
+}
+
+.input-w-sm-full {
+  width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+  .input-w-lg-4 {
+    width: 60%;
+  }
+}
