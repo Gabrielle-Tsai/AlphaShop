@@ -6,9 +6,9 @@ It's a practice from Alpha Camp Dev Course 4 (frontend). Designed to practicing:
 - Develope by UI design draft
 
 ## Display
-2024.04.21 Update!
+2024.05.13 Update!
 
-![project cover](https://github.com/Gabrielle-Tsai/AlphaShop/blob/master/public/images/AlphaShopII.png?raw=true)
+![project cover](https://github.com/Gabrielle-Tsai/AlphaShop/blob/master/public/images/AlphaShopIII.png?raw=true)
 
 ## Features
 Let users fill forms to checkout.
