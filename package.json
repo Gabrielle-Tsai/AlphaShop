@@ -14,8 +14,11 @@
   "dependencies": {
     "gh-pages": "^6.1.1",
     "git": "^0.1.5",
+    "glob": "^11.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite-plugin-ejs": "^1.7.0",
+    "vite-plugin-live-reload": "^3.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
